@@ -1,0 +1,16 @@
+## Basic template for VM, modified from: "https://cloud.google.com/deployment-manager/docs/configuration/templates/use-environment-variables"
+resources:
+- name: {{ env["name"] }} ## Importing the name of the VM from YAML file
+  type: compute.v1.instance
+  properties:
+    zone: {{ properties["zone"] }} ## Importing the zone for the VM from the YAML file
+    machineType: https://www.googleapis.com/compute/v1/projects/cmp3747m-fung-18673753/zones/europe-west2-a/machineTypes/n1-standard-1 ## Attains the machineType for n1-standard in the London zone
+    disks:
+    - deviceName: boot
+      type: PERSISTENT
+      boot: true
+      autoDelete: true
+      initializeParams:
+        sourceImage: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-9-stretch-v20201112 ## Uses the Debian 9 Operating system for the VM
+    networkInterfaces:
+    - network: https://www.googleapis.com/compute/v1/projects/cmp3747m-fung-18673753/global/networks/default ##Uses the default network

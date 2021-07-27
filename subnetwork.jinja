@@ -1,0 +1,8 @@
+## Subnetwork template modified from "https://www.qwiklabs.com/focuses/6430?parent=catalog"
+resources:
+- name: {{ env["name"] }}
+  type: compute.v1.subnetwork
+  properties: ## References to import properties from YAML file
+    ipCidrRange: {{ properties["ipCidrRange"] }}
+    network: {{ properties["network"] }}
+    region: {{ properties["region"] }}

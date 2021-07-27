@@ -1,0 +1,6 @@
+## Network template, modified from "https://www.qwiklabs.com/focuses/6430?parent=catalog"
+resources:
+- name: {{ env["name"] }}
+  type: compute.v1.network
+  properties:
+    autoCreateSubnetworks: false

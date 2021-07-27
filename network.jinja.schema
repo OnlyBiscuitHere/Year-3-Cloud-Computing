@@ -1,0 +1,19 @@
+info:
+    title: Network template
+    author: 18673753@students.lincoln.ac.uk
+    description: Template for building a Network
+    version: 1.0
+
+imports:
+- path: network.jinja
+
+properties:
+    name:
+        type: string
+        description: Name of the network instance
+    properties:
+        autoCreateSubnetworks:
+            type: boolean
+            default: false
+            description: Allows for custom subnetwork to be made
+            

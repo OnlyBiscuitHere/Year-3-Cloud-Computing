@@ -1,0 +1,38 @@
+info:
+    title: SQL and database template
+    author: 18673753@students.lincoln.ac.uk
+    description: Creates a unique SQL container and database 
+    version: 1.0
+
+imports:
+- path: sql.jinja
+
+properties:
+    name:
+        type: string
+        description: Requires a unique name for the instance
+    region:
+        type: string
+        description: Region for deployment of the instance can be altered to reach the regional requirements for expansion
+    settings:
+        tier:
+            type: string
+            default: db-n1-standard-1
+            description: Minimum specification for a machine type but can be altered to reach more demand when reached
+        backupConfiguration:
+            binaryLogEnabled:
+                type: boolean
+                default: true
+                description: Allow for logging data modifcations
+
+    name: 
+        types: string
+        description: Template name for database
+    properties:
+        instance:
+            type: string
+            description: Reference the SQL Admin 
+        charset:
+            type: string
+            default: utf8
+            description: Character encoding

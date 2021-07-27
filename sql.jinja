@@ -1,0 +1,19 @@
+## SQL template, modified from "https://cloud.google.com/deployment-manager/docs/configuration/templates/use-environment-variables"
+resources:
+- name: {{ env["name"] }}
+  type: gcp-types/sqladmin-v1beta4:instances
+  properties:
+    region: {{ properties["region"] }} ## Imports the region for the SQL admin to UK region
+    settings:
+      tier: db-n1-standard-1 ## Sets the SQLadmin to db-n1-standard tier
+      backupConfiguration:
+        binaryLogEnabled: true
+        enabled: true
+
+##Database template
+- name: database-{{ env["name"] }} 
+  type: gcp-types/sqladmin-v1beta4:databases
+  properties:
+    name: database-{{ env["name"] }} ## Name of database
+    instance: $(ref.{{ env["name"] }}.name) ## References to the SQL Admin template above
+    charset: utf8

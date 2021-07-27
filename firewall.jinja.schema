@@ -1,0 +1,22 @@
+info:
+    title: Firewall template
+    author: 18673753@students.lincoln.ac.uk
+    description: Template for building a Firewall
+    version: 1.0
+
+imports:
+- path: firewall.jinja
+
+properties:
+    name:
+        type: string
+        description: Name of firewall
+    properties:
+        network:
+            type: string
+            description: Reference to the network built
+        allowed:
+            IPProtocol: 
+                type: string
+                default: TCP
+                description: Sets the IP protocol 

@@ -1,0 +1,25 @@
+info:
+    title: Virtual Machine template
+    author: 18673753@students.lincoln.ac.uk
+    description: Creates the Virtual Machine
+    version: 1.0
+
+imports:
+- path: vm.jinja
+
+properties:
+    name:
+        type: string
+        description: Name of the VM instance
+    zone:
+        type: string
+        description: Name of the zone for the VM
+    machineType: 
+        type: string
+        description: selfLink to the n1-standard-1 computer type, provides a standard configuration for a VM
+    disks:
+        type: string
+        description: selfLink to the Debian-9 Operating system
+    network:
+        type: string
+        description: selfLink to the default network, can be changed later to the VPC

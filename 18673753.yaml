@@ -1,0 +1,44 @@
+#All the instances being created from jinja2 files
+imports:
+- path: vm.jinja
+- path: vm.jinja.schema
+- path: sql.jinja
+- path: sql.jinja.schema
+- path: network.jinja
+- path: network.jinja.schema
+- path: subnetwork.jinja
+- path: subnetwork.jinja.schema
+- path: firewall.jinja
+- path: firewall.jinja.schema
+
+#Basic VM configuration
+resources:
+- name: vm-instance
+  type: vm.jinja
+  properties: 
+    zone: europe-west2-a # Setting the region to London but this can be changed to accommodate changes
+
+#SQL and Database configuration  
+- name: final-sql-instance76
+  type: sql.jinja
+  properties:
+    region: europe-west2 # Region set to the UK
+
+#Network configuration
+- name: network-instance
+  type: network.jinja
+
+#Subnetwork configuration
+- name: subnetwork-instance
+  type: subnetwork.jinja
+  properties: 
+    ipCidrRange: 10.166.0.0/20 #IP range for the Belgium region
+    network: $(ref.network-instance.selfLink) # Reference to the network created
+    region: europe-west1 # Setting to the Belgium region in case of network downage in UK region
+
+#Firewall rule configuration
+- name: firewall-instance
+  type: firewall.jinja
+  properties:
+    network: $(ref.network-instance.selfLink) # Reference to the network being created
+    IPProtocol: TCP # Can be changed to accept all protocols

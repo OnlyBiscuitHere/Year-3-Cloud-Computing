@@ -1,0 +1,23 @@
+info:
+    title: Subnetwork template
+    author: 18673753@students.lincoln.ac.uk
+    description: Template for building the subnetwork
+    version: 1.0
+
+imports:
+- path: subnetwork.jinja
+
+properties:
+    name:
+        type: string
+        description: Name of Subnetwork
+    properties:
+        ipCidrRange:
+            type: string
+            description: IP address to allow specifc packets to be sent to specific devices
+        network:
+            type: string
+            description: Reference to the network created
+        region:
+            type: string
+            description: Regional location that the Subnetwork is built
